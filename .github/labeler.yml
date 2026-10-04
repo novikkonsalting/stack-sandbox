@@ -1,0 +1,13 @@
+# Метка для PR, которые меняют тесты или CI: их всегда проверяет человек (2.2)
+tests-ci-changed:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**'
+          - '**/test/**'
+          - '**/tests/**'
+          - '**/__tests__/**'
+          - '**/*_test.*'
+          - '**/*.test.*'
+          - '**/*.spec.*'
+          - '**/test_*.py'
+          - '**/conftest.py'

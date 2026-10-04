@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  # Базовые проверки стека; проверки под язык (тесты, линтер) добавляются в проекте отдельной job
+  stack-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Обязательные файлы на месте
+        run: |
+          missing=0
+          for f in AGENTS.md CLAUDE.md docs/PROJECT_CONTEXT.md docs/journal.md; do
+            [ -f "$f" ] || { echo "::error::Нет файла $f"; missing=1; }
+          done
+          head -n 1 CLAUDE.md | grep -qx '@AGENTS.md' || { echo "::error::Первая строка CLAUDE.md должна быть @AGENTS.md"; missing=1; }
+          exit $missing
+
+      - name: Секретов в репозитории нет
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

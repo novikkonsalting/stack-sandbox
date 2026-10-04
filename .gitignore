@@ -1,0 +1,27 @@
+# Секреты — никогда в репозиторий (2.5)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+secrets/
+credentials*.json
+service-account*.json
+
+# Локальные настройки агентов
+.claude/settings.local.json
+
+# Системное и сборка
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/
+.venv/
+venv/
+dist/
+build/
+*.log
