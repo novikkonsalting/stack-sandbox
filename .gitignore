@@ -25,3 +25,6 @@ venv/
 dist/
 build/
 *.log
+
+.gemini/
+gha-creds-*.json
