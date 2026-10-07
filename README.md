@@ -8,3 +8,4 @@
 3. Записи поручений — в `docs/tasks/` по шаблону `docs/templates/task.md`.
 
 Правила для агентов — `AGENTS.md`. Claude Code читает их через `CLAUDE.md`.
+Тест Jules 2026-10-07
